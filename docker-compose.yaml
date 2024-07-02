@@ -1,0 +1,15 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: wedi
+      MONGO_INITDB_ROOT_PASSWORD: wedime
+volumes:
+  mongo-data:
+    driver: local
